@@ -1,37 +1,54 @@
-## Welcome to GitHub Pages
+## macOS firewall settings
 
-You can use the [editor on GitHub](https://github.com/JD-Wang/macOS-proxy-settings-from-terminal.md/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### 获取 networksetup 所有配置
+```bash
+networksetup -help
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### 设置 http 代理
+```bash
+networksetup -setwebproxy Wi-fi 127.0.0.1 8080
+```
 
-### Jekyll Themes
+### 设置 http 代理状态 (打开/关闭)
+```bash
+# 打开
+networksetup -setwebproxystate Wi-Fi on
+networksetup -setwebproxystate Wi-Fi off
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/JD-Wang/macOS-proxy-settings-from-terminal.md/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### 设置 https 代理
+```bash
+networksetup -setsecurewebproxy Wi-fi 127.0.0.1 8080
+```
 
-### Support or Contact
+### 设置 https 代理状态 (打开/关闭)
+```bash
+# 打开
+networksetup -setsecurewebproxystate Wi-Fi on
+networksetup -setsecurewebproxystate Wi-Fi off
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+### 设置 socks 代理
+```bash
+networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 7070
+```
+
+### 获取当前 socks 代理配置和状态
+```bash
+networksetup -getsocksfirewallproxy Wi-Fi
+```
+
+```
+Enabled: Yes
+Server: 127.0.0.1
+Port: 7070
+Authenticated Proxy Enabled: 0
+```
+
+### 设置 socks 代理状态 (打开/关闭)
+```bash
+networksetup -setsocksfirewallproxystate Wi-Fi on
+networksetup -setsocksfirewallproxystate Wi-Fi off
+```
