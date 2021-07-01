@@ -1,4 +1,4 @@
-## macOS firewall settings
+# macOS firewall settings
 
 ### 获取 networksetup 所有配置
 ```bash
@@ -52,3 +52,16 @@ Authenticated Proxy Enabled: 0
 networksetup -setsocksfirewallproxystate Wi-Fi on
 networksetup -setsocksfirewallproxystate Wi-Fi off
 ```
+
+
+# windows 设置
+```bash
+// 打开关闭 lan  1 | 0
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 1 /f
+```
+
+```bash
+// 修改代理 ip
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /t REG_SZ /d 127.0.0.1:3388 /f
+```
+
